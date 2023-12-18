@@ -1,6 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
 import { hashSync } from 'bcrypt'
 import { Document, Types } from 'mongoose'
+import { USER_TYPES } from 'src/utils/constants'
+import { UserType } from 'src/utils/types'
 
 export type UserDocument = User & Document
 
@@ -23,6 +25,9 @@ export class User {
 
   @Prop({ required: true })
   password: string
+
+  @Prop({ default: USER_TYPES.PUBLIC })
+  type: UserType
 
   @Prop({ default: [], ref: 'User' })
   followers: Types.ObjectId[]

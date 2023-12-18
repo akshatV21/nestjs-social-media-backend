@@ -1,3 +1,5 @@
+import { USER_TYPES } from '../constants'
+
 export type HttpResponse = {
   success: boolean
   message: string
@@ -5,3 +7,5 @@ export type HttpResponse = {
 }
 
 export type HttpSuccessResponse = Promise<HttpResponse>
+
+export type UserType = (typeof USER_TYPES)[keyof typeof USER_TYPES]
